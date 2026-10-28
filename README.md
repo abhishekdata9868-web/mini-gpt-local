@@ -28,7 +28,7 @@ This is a separate learning path from the Qwen chat app above. The `from_scratch
 
 ### Google Colab
 
-Open the [from-scratch Colab notebook](https://colab.research.google.com/github/abhishekdata9868-web/mini-gpt-local/blob/main/from_scratch/MiniGPT_From_Scratch_Colab.ipynb). It clones the repository when needed, installs the small set of dependencies, and starts training.
+Open the [from-scratch Colab notebook](https://colab.research.google.com/github/abhishekdata9868-web/mini-gpt-local/blob/main/from_scratch/MiniGPT_From_Scratch_Colab.ipynb). It clones the repository when needed, runs a small smoke test, and starts training.
 
 ### Run locally
 
@@ -38,8 +38,11 @@ From the repository root, run:
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -r from_scratch/requirements.txt
+python from_scratch/train.py --smoke-test
 python from_scratch/train.py
 ```
+
+The smoke test checks device selection, forward/loss, backward/gradients, an optimizer step, checkpoint save/load, and next-token generation without downloading the training corpus. If it passes, run the normal training command.
 
 The training script selects NVIDIA CUDA when available, then Apple Silicon MPS, and otherwise CPU. CPU training may be slow. The checkpoint is saved to `from_scratch/checkpoint/minigpt.pt`.
 
