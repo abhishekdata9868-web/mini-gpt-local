@@ -2,6 +2,20 @@
 
 Last updated: 2026-10-29
 
+## Permanent working habit
+
+**Kaam karo → test karo → evidence record karo → Git update karo → agla action note karo.**
+
+Follow this sequence at the end of every work session and after each meaningful implementation milestone:
+
+1. **Kaam karo:** Make the smallest useful change that advances the current goal.
+2. **Test karo:** Run targeted checks relevant to that change; do not claim a test passed unless its actual output confirms it.
+3. **Evidence record karo:** Save the exact command, observed PASS/FAIL result, important output, and any remaining limitation.
+4. **Git update karo:** Review the diff, commit the verified change, push it to the working branch, and update the related pull request. Never overwrite unrelated user changes; do not merge to `main` without an explicit decision.
+5. **Agla action note karo:** Update this file with the current milestone, blockers, and one concrete next action.
+
+If a step cannot be completed, record the reason instead of pretending it succeeded. Prefer bounded, targeted verification and keep progress moving.
+
 ## Long-term goal
 
 Build MYAI: a useful autonomous coding assistant that can understand tasks, inspect project files, make bounded changes, run targeted tests, recover from errors, and record decisions/results. Longer-term capabilities include Hindi/Hinglish support, persistent memory, multimodal inputs, app generation, and controlled deployment.
@@ -27,7 +41,7 @@ Build MYAI: a useful autonomous coding assistant that can understand tasks, insp
 ## Known issues / limits
 
 - The full 3,000-step training run has not yet been confirmed.
-- The initial smoke-test run warned that NumPy was missing. NumPy has since been added to the branch requirements, but the user's local environment must pull the latest branch and install requirements.
+- NumPy was missing in the user's first smoke-test environment. NumPy has since been added to the branch requirements, but the user's local environment must pull the latest branch and install requirements.
 - The user's shell startup displayed `~/.zshrc:5: unmatched "`. This is separate from MiniGPT and should be inspected/fixed when convenient; it did not stop the Python smoke test.
 - Smoke test PASS verifies basic execution, not language quality or a successful full training run.
 
@@ -48,4 +62,4 @@ Build MYAI: a useful autonomous coding assistant that can understand tasks, insp
 - [ ] Record exact test commands and actual results (PASS/FAIL; do not infer success).
 - [ ] Record branch and commit/PR link.
 - [ ] List blockers and one concrete next action.
-- [ ] Commit and push reviewed changes to the working branch.
+- [ ] Commit and push verified changes to the working branch.
